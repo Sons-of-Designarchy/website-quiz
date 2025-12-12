@@ -9,116 +9,76 @@ export function buildRelumePrompts(data: QuizData): RelumePrompts {
   // English prompt
   const relumePromptEn = `You are an expert UX strategist. Generate a sitemap and website wireframe structure.
 
-PROJECT TYPE:
-${data.tipoSitio || "Not specified"}
+WEBSITE TYPE:
+${data.tipoSitio || "Not specified"}${data.tipoSitioOtro ? ` - ${data.tipoSitioOtro}` : ""}
 
-PROJECT NAME:
-${data.nombreProyecto || "Not specified"}
+MAIN OBJECTIVE:
+${data.objetivoPrincipal || "Not specified"}${data.objetivoOtro ? ` - ${data.objetivoOtro}` : ""}
 
-INDUSTRY:
-${data.industria || "Not specified"}
-
-LOCATION:
-${data.ubicacion || "Not specified"}
-
-EXISTING WEBSITE:
-${data.sitioActual || "None"}
-
-MAIN GOAL OF THE SITE:
-${data.objetivoProyecto || "Not specified"}${data.objetivoOtro ? ` - ${data.objetivoOtro}` : ""}
-
-MAIN AUDIENCE:
-${data.usuarioPrincipal || "Not specified"}${data.usuarioOtro ? ` - ${data.usuarioOtro}` : ""}
+TARGET AUDIENCE:
+${data.usuarioIdeal || "Not specified"}${data.usuarioOtro ? ` - ${data.usuarioOtro}` : ""}
+${data.usuarioDetalles ? `Additional details: ${data.usuarioDetalles}` : ""}
 
 PRIMARY CALL TO ACTION:
-${data.accionDeseada || "Not specified"}
+${data.ctaPrincipal || "Not specified"}${data.ctaOtra ? ` - ${data.ctaOtra}` : ""}
 
 ESTIMATED SITE SIZE:
 ${data.tamanoSitio || "Not specified"}
 
-REQUIRED SECTIONS:
-${data.seccionesDeseadas.length > 0 ? data.seccionesDeseadas.join(", ") : "Not specified"}${data.seccionesOtra ? `\nAdditional section: ${data.seccionesOtra}` : ""}
+VISUAL STYLE PREFERENCES:
+${data.estiloVisual && data.estiloVisual.length > 0 ? data.estiloVisual.join(", ") : "Not specified"}
 
 CONTENT AVAILABILITY:
-${data.contenidoDisponible.length > 0 ? data.contenidoDisponible.join(", ") : "Not specified"}
+${data.contenidoDisponible && data.contenidoDisponible.length > 0 ? data.contenidoDisponible.join(", ") : "Not specified"}
 
-VISUAL STYLE:
-${data.estiloVisual.length > 0 ? data.estiloVisual.join(", ") : "Not specified"}
-
-REFERENCE WEBSITES:
-${data.referenciasVisuales || "None provided"}
+ADDITIONAL SERVICES NEEDED:
+${data.serviciosAdicionales && data.serviciosAdicionales.length > 0 ? data.serviciosAdicionales.join(", ") : "None"}${data.serviciosAdicionalesOtro ? ` - ${data.serviciosAdicionalesOtro}` : ""}
 
 TIMELINE:
 ${data.timeline || "Not specified"}
 
-BUDGET RANGE:
-${data.presupuestoRango || "Not specified"}
-
-NOTES:
-${data.notasAdicionales || "None"}
-
 Please generate:
-1) A clear sitemap
+1) A clear sitemap optimized for the stated objectives
 2) A detailed wireframe outline per page with section order
-3) Suggested hero messaging and primary CTAs
-4) Any extra sections needed based on best practices`;
+3) Suggested hero messaging aligned with the primary CTA
+4) Any extra sections needed based on UX best practices for this type of website`;
 
   // Spanish prompt
   const relumePromptEs = `Eres un estratega UX experto. Genera un sitemap y una estructura de wireframe para un sitio web.
 
 TIPO DE SITIO:
-${data.tipoSitio || "No especificado"}
+${data.tipoSitio || "No especificado"}${data.tipoSitioOtro ? ` - ${data.tipoSitioOtro}` : ""}
 
-NOMBRE DEL PROYECTO:
-${data.nombreProyecto || "No especificado"}
+OBJETIVO PRINCIPAL:
+${data.objetivoPrincipal || "No especificado"}${data.objetivoOtro ? ` - ${data.objetivoOtro}` : ""}
 
-INDUSTRIA:
-${data.industria || "No especificado"}
+AUDIENCIA OBJETIVO:
+${data.usuarioIdeal || "No especificado"}${data.usuarioOtro ? ` - ${data.usuarioOtro}` : ""}
+${data.usuarioDetalles ? `Detalles adicionales: ${data.usuarioDetalles}` : ""}
 
-UBICACIÓN:
-${data.ubicacion || "No especificado"}
-
-SITIO ACTUAL:
-${data.sitioActual || "Ninguno"}
-
-OBJETIVO PRINCIPAL DEL SITIO:
-${data.objetivoProyecto || "No especificado"}${data.objetivoOtro ? ` - ${data.objetivoOtro}` : ""}
-
-AUDIENCIA PRINCIPAL:
-${data.usuarioPrincipal || "No especificado"}${data.usuarioOtro ? ` - ${data.usuarioOtro}` : ""}
-
-ACCIÓN PRINCIPAL:
-${data.accionDeseada || "No especificado"}
+ACCIÓN PRINCIPAL (CTA):
+${data.ctaPrincipal || "No especificado"}${data.ctaOtra ? ` - ${data.ctaOtra}` : ""}
 
 TAMAÑO DEL SITIO:
 ${data.tamanoSitio || "No especificado"}
 
-SECCIONES NECESARIAS:
-${data.seccionesDeseadas.length > 0 ? data.seccionesDeseadas.join(", ") : "No especificado"}${data.seccionesOtra ? `\nOtra sección: ${data.seccionesOtra}` : ""}
+PREFERENCIAS DE ESTILO VISUAL:
+${data.estiloVisual && data.estiloVisual.length > 0 ? data.estiloVisual.join(", ") : "No especificado"}
 
 CONTENIDO DISPONIBLE:
-${data.contenidoDisponible.length > 0 ? data.contenidoDisponible.join(", ") : "No especificado"}
+${data.contenidoDisponible && data.contenidoDisponible.length > 0 ? data.contenidoDisponible.join(", ") : "No especificado"}
 
-ESTILO VISUAL:
-${data.estiloVisual.length > 0 ? data.estiloVisual.join(", ") : "No especificado"}
-
-REFERENCIAS:
-${data.referenciasVisuales || "Ninguna proporcionada"}
+SERVICIOS ADICIONALES NECESARIOS:
+${data.serviciosAdicionales && data.serviciosAdicionales.length > 0 ? data.serviciosAdicionales.join(", ") : "Ninguno"}${data.serviciosAdicionalesOtro ? ` - ${data.serviciosAdicionalesOtro}` : ""}
 
 TIMELINE:
 ${data.timeline || "No especificado"}
 
-RANGO DE PRESUPUESTO:
-${data.presupuestoRango || "No especificado"}
-
-NOTAS:
-${data.notasAdicionales || "Ninguna"}
-
 Genera:
-1) Un sitemap claro
+1) Un sitemap claro optimizado para los objetivos establecidos
 2) Un outline de wireframe por página con orden de secciones
-3) Un mensaje sugerido para el hero y CTA principal
-4) Secciones extra recomendadas según mejores prácticas`;
+3) Un mensaje sugerido para el hero alineado con el CTA principal
+4) Secciones extra recomendadas según mejores prácticas UX para este tipo de sitio`;
 
   return {
     relumePromptEn,
