@@ -10,34 +10,22 @@ export async function sendToGoogleSheets(data: QuizData): Promise<boolean> {
     const payload = {
       timestamp: new Date().toISOString(),
       
-      // New website blueprint fields
+      // Website blueprint fields - matching the new quiz structure
       tipoSitio: data.tipoSitio || "",
-      nombreProyecto: data.nombreProyecto || "",
-      industria: data.industria || "",
-      ubicacion: data.ubicacion || "",
-      sitioActual: data.sitioActual || "",
-      
-      objetivoProyecto: data.objetivoProyecto || "",
+      tipoSitioOtro: data.tipoSitioOtro || "",
+      objetivoPrincipal: data.objetivoPrincipal || "",
       objetivoOtro: data.objetivoOtro || "",
-      
-      usuarioPrincipal: data.usuarioPrincipal || "",
+      usuarioIdeal: data.usuarioIdeal || "",
       usuarioOtro: data.usuarioOtro || "",
-      
-      accionDeseada: data.accionDeseada || "",
-      
+      usuarioDetalles: data.usuarioDetalles || "",
+      ctaPrincipal: data.ctaPrincipal || "",
+      ctaOtra: data.ctaOtra || "",
       tamanoSitio: data.tamanoSitio || "",
-      
-      seccionesDeseadas: data.seccionesDeseadas?.join(", ") || "",
-      seccionesOtra: data.seccionesOtra || "",
-      
-      contenidoDisponible: data.contenidoDisponible?.join(", ") || "",
-      
       estiloVisual: data.estiloVisual?.join(", ") || "",
-      referenciasVisuales: data.referenciasVisuales || "",
-      
+      contenidoDisponible: data.contenidoDisponible?.join(", ") || "",
+      serviciosAdicionales: data.serviciosAdicionales?.join(", ") || "",
+      serviciosAdicionalesOtro: data.serviciosAdicionalesOtro || "",
       timeline: data.timeline || "",
-      presupuestoRango: data.presupuestoRango || "",
-      notasAdicionales: data.notasAdicionales || "",
       
       // Relume prompts (internal use only, not shown in UI)
       relumePromptEn: data.relumePromptEn || "",
