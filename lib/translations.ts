@@ -10,9 +10,9 @@ export const translations = {
       badge: "5-10 minutos",
       title1: "Ayúdanos a preparar",
       title2: "tu propuesta perfecta",
-      description: "Completa este blueprint de 9 pasos para llegar más alineado a tu sesión. Cubriremos objetivo, audiencia, estilo, contenido y timeline.",
+      description: "Completa este blueprint de 10 pasos para llegar más alineado a tu sesión. Cubriremos información de contacto, objetivo, audiencia, estilo, contenido y timeline.",
       feature1Title: "5-10 minutos",
-      feature1Desc: "9 pasos enfocados en websites",
+      feature1Desc: "10 pasos enfocados en websites",
       feature2Title: "Sesión más productiva",
       feature2Desc: "Llegamos con contexto e ideas preparadas",
       feature3Title: "100% opcional",
@@ -32,6 +32,18 @@ export const translations = {
     
     // Quiz Steps
     quiz: {
+      // STEP CONTACT: Contact info
+      stepContact: {
+        title: "Empecemos con lo básico",
+        subtitle: "Información de contacto y proyecto",
+        personNameLabel: "Tu nombre",
+        personNamePlaceholder: "Ej: María García",
+        projectNameLabel: "Nombre del proyecto",
+        projectNamePlaceholder: "Ej: Mi Startup, Mi Portafolio",
+        contactLabel: "Email o teléfono",
+        contactPlaceholder: "Ej: maria@ejemplo.com o +52 123 456 7890",
+      },
+      
       // STEP 0: Type of website
       step0: {
         title: "¿Qué tipo de sitio necesitas?",
@@ -201,9 +213,9 @@ export const translations = {
       badge: "5-10 minutes",
       title1: "Help us prepare",
       title2: "your perfect proposal",
-      description: "Complete this 9-step blueprint to arrive more aligned to your session. We'll cover goals, audience, style, content, and timeline.",
+      description: "Complete this 10-step blueprint to arrive more aligned to your session. We'll cover contact info, goals, audience, style, content, and timeline.",
       feature1Title: "5-10 minutes",
-      feature1Desc: "9 steps focused on websites",
+      feature1Desc: "10 steps focused on websites",
       feature2Title: "More productive session",
       feature2Desc: "We arrive with context and prepared ideas",
       feature3Title: "100% optional",
@@ -223,6 +235,18 @@ export const translations = {
     
     // Quiz Steps
     quiz: {
+      // STEP CONTACT: Contact info
+      stepContact: {
+        title: "Let's start with the basics",
+        subtitle: "Contact and project information",
+        personNameLabel: "Your name",
+        personNamePlaceholder: "e.g., Maria Garcia",
+        projectNameLabel: "Project name",
+        projectNamePlaceholder: "e.g., My Startup, My Portfolio",
+        contactLabel: "Email or phone",
+        contactPlaceholder: "e.g., maria@example.com or +52 123 456 7890",
+      },
+      
       // STEP 0: Type of website
       step0: {
         title: "What type of website do you need?",
@@ -289,7 +313,7 @@ export const translations = {
           "Other",
         ],
         otraLabel: "Describe the action",
-        otroPlaceholder: "E.g: Donate, subscribe",
+        otraPlaceholder: "E.g: Donate, subscribe",
       },
 
       // STEP 4: Site size

@@ -10,6 +10,11 @@ export async function sendToGoogleSheets(data: QuizData): Promise<boolean> {
     const payload = {
       timestamp: new Date().toISOString(),
       
+      // Contact info
+      personName: data.personName || "",
+      projectName: data.projectName || "",
+      contact: data.contact || "",
+      
       // Website blueprint fields - matching the new quiz structure
       tipoSitio: data.tipoSitio || "",
       tipoSitioOtro: data.tipoSitioOtro || "",
@@ -27,9 +32,8 @@ export async function sendToGoogleSheets(data: QuizData): Promise<boolean> {
       serviciosAdicionalesOtro: data.serviciosAdicionalesOtro || "",
       timeline: data.timeline || "",
       
-      // Relume prompts (internal use only, not shown in UI)
+      // Relume prompt (internal use only, not shown in UI)
       relumePromptEn: data.relumePromptEn || "",
-      relumePromptEs: data.relumePromptEs || "",
     };
 
     console.log("Sending to Google Sheets:", payload);

@@ -11,6 +11,11 @@ import { LanguageToggle } from "./LanguageToggle";
 import { buildRelumePrompts } from "../lib/relumePrompt";
 
 export interface QuizData {
+  // Contact info
+  personName: string;
+  projectName: string;
+  contact: string; // email or phone
+  
   // New website-specific fields
   tipoSitio: string;
   tipoSitioOtro: string;
@@ -28,32 +33,16 @@ export interface QuizData {
   contenidoDisponible: string[];
   timeline: string;
 
-  // Internal-only fields (computed, not shown in UI)
+  // Internal-only field (computed, not shown in UI)
   relumePromptEn: string;
-  relumePromptEs: string;
-
-  // Legacy fields kept for backward compatibility
-  nombreProyecto: string;
-  industria: string;
-  ubicacion: string;
-  sitioActual: string;
-  objetivoProyecto: string;
-  usuarioPrincipal: string;
-  accionDeseada: string;
-  seccionesDeseadas: string[];
-  seccionesOtra: string;
-  referenciasVisuales: string;
-  presupuestoRango: string;
-  notasAdicionales: string;
-  tipoProyecto: string[];
-  planSeleccionado: string;
-  presupuesto: string;
-  nombre: string;
-  email: string;
-  empresa: string;
 }
 
 const initialData: QuizData = {
+  // Contact info
+  personName: "",
+  projectName: "",
+  contact: "",
+  
   // New fields
   tipoSitio: "",
   tipoSitioOtro: "",
@@ -71,30 +60,10 @@ const initialData: QuizData = {
   contenidoDisponible: [],
   timeline: "",
   relumePromptEn: "",
-  relumePromptEs: "",
-  
-  // Legacy fields (empty)
-  nombreProyecto: "",
-  industria: "",
-  ubicacion: "",
-  sitioActual: "",
-  objetivoProyecto: "",
-  usuarioPrincipal: "",
-  accionDeseada: "",
-  seccionesDeseadas: [],
-  seccionesOtra: "",
-  referenciasVisuales: "",
-  presupuestoRango: "",
-  notasAdicionales: "",
-  tipoProyecto: [],
-  planSeleccionado: "",
-  presupuesto: "",
-  nombre: "",
-  email: "",
-  empresa: "",
 };
 
 type StepType = 
+  | "stepContact" // Contact info
   | "step0"   // Type of website
   | "step1"   // Main goal
   | "step2"   // Ideal user
@@ -126,6 +95,7 @@ export function OnboardingQuiz() {
 
   // Fixed step mapping - 12 steps total (0-11)
   const stepMapping: StepType[] = [
+    "stepContact",
     "step0",
     "step1",
     "step2",
@@ -175,12 +145,11 @@ export function OnboardingQuiz() {
     setIsSubmitting(true);
     
     // Generate Relume prompts before sending
-    const { relumePromptEn, relumePromptEs } = buildRelumePrompts(quizData);
+    const { relumePromptEn } = buildRelumePrompts(quizData);
     
     const finalData: QuizData = {
       ...quizData,
       relumePromptEn,
-      relumePromptEs,
     };
     
     // Send to Google Sheets
@@ -206,6 +175,8 @@ export function OnboardingQuiz() {
 
   const isStepValid = () => {
     switch (currentStepType) {
+      case 'stepContact':
+        return quizData.personName !== "" && quizData.projectName !== "" && quizData.contact !== "";
       case 'step0':
         if (quizData.tipoSitio === "Otro" || quizData.tipoSitio === "Other") {
           return quizData.tipoSitio !== "" && quizData.tipoSitioOtro !== "";

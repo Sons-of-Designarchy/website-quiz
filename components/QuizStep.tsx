@@ -18,6 +18,58 @@ export function QuizStep({ step, stepType, data, updateData, language }: QuizSte
   
   const renderStep = () => {
     switch (stepType) {
+      // STEP CONTACT: Contact info
+      case 'stepContact':
+        return (
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-white text-2xl mb-2">{t.stepContact.title}</h2>
+              <p className="text-white/60">{t.stepContact.subtitle}</p>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <Label htmlFor="personName" className="text-white/60 mb-2 block text-sm">
+                  {t.stepContact.personNameLabel} *
+                </Label>
+                <Input
+                  id="personName"
+                  type="text"
+                  value={data.personName}
+                  onChange={(e) => updateData("personName", e.target.value)}
+                  placeholder={t.stepContact.personNamePlaceholder}
+                  className="bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                />
+              </div>
+              <div>
+                <Label htmlFor="projectName" className="text-white/60 mb-2 block text-sm">
+                  {t.stepContact.projectNameLabel} *
+                </Label>
+                <Input
+                  id="projectName"
+                  type="text"
+                  value={data.projectName}
+                  onChange={(e) => updateData("projectName", e.target.value)}
+                  placeholder={t.stepContact.projectNamePlaceholder}
+                  className="bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                />
+              </div>
+              <div>
+                <Label htmlFor="contact" className="text-white/60 mb-2 block text-sm">
+                  {t.stepContact.contactLabel} *
+                </Label>
+                <Input
+                  id="contact"
+                  type="text"
+                  value={data.contact}
+                  onChange={(e) => updateData("contact", e.target.value)}
+                  placeholder={t.stepContact.contactPlaceholder}
+                  className="bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                />
+              </div>
+            </div>
+          </div>
+        );
+        
       // STEP 0: Type of website
       case 'step0':
         const showTipoSitioOtro = data.tipoSitio === "Otro" || data.tipoSitio === "Other";
