@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { ArrowRight, Clock, Sparkles, Target } from "lucide-react";
 import { Button } from "./ui/button";
 import { Language, translations } from "../lib/translations";

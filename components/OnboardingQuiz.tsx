@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Check } from "lucide-react";
 import { Button } from "./ui/button";
 import { QuizStep } from "./QuizStep";
@@ -113,6 +113,16 @@ export function OnboardingQuiz() {
   const [direction, setDirection] = useState(0);
   const [language, setLanguage] = useState<Language>("es");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Apply dark mode to body
+  useEffect(() => {
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark', 'bg-[#0a0a0a]', 'text-white');
+    return () => {
+      document.documentElement.classList.remove('dark');
+      document.body.classList.remove('dark', 'bg-[#0a0a0a]', 'text-white');
+    };
+  }, []);
 
   // Fixed step mapping - 12 steps total (0-11)
   const stepMapping: StepType[] = [
@@ -248,7 +258,7 @@ export function OnboardingQuiz() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#0a0a0a]">
       {/* Header */}
       <header className="border-b border-white/10 px-6 py-4">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
