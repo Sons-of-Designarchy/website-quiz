@@ -3,7 +3,7 @@ import { QuizData } from "../components/OnboardingQuiz";
 // Replace this with your Google Apps Script Web App URL
 // Get it from: Extensions > Apps Script > Deploy > New deployment > Web app
 // Example: https://script.google.com/macros/s/AKfycby.../exec
-const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_URL_HERE";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyvoedV6PzL3gcEcZN8yRnqvjU92bhw-OgzfkySWJtPTvOm0JO1_ICvWCTmprEvuVxMHw/exec";
 
 export async function sendToGoogleSheets(data: QuizData): Promise<boolean> {
   try {
